@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "qubus/support": "^2.3"
+        "qubus/support": "^3"
     },
     "require-dev": {
         "mockery/mockery": "^1.3.1",
