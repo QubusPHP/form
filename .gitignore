@@ -1,0 +1,7 @@
+/vendor/
+.idea
+.phpcs-cache
+.phpunit.result.cache
+.sync-exclude.lst
+composer.lock
+index.php
