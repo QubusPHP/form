@@ -14,6 +14,7 @@ use Qubus\Form\FormBuilder\Decorator;
 use Qubus\Form\FormBuilder\Element;
 use Qubus\Form\FormBuilder\Group;
 use Qubus\Form\FormBuilder\Input;
+use Qubus\Form\FormBuilder\Label;
 use Qubus\Form\FormBuilder\Select;
 use Qubus\Form\FormBuilder\Textarea;
 use Qubus\Form\FormBuilder\WithComponents;
@@ -97,6 +98,10 @@ class Bootstrap extends Decorator
 
         if ($element instanceof Input && !static::isButton($element)) {
             $element->newComponent('input-group', 'div', [], ['class' => 'input-group']);
+        }
+
+        if ($element instanceof Label) {
+            $element->addClass('div-label');
         }
 
         if ($element instanceof WithComponents) {

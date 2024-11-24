@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Qubus\Form\FormBuilder;
 
+use DateTimeInterface;
+
 use function addcslashes;
 use function array_filter;
 use function ctype_alpha;
@@ -250,7 +252,7 @@ trait BasicValidation
      */
     protected function validateTypeDatetimeLocal(): bool
     {
-        $res = date_parse_from_format(DateTime::RFC3339, $this->getValue());
+        $res = date_parse_from_format(DateTimeInterface::RFC3339, $this->getValue());
         return $res['error_count'] === 0;
     }
 

@@ -22,6 +22,7 @@ use Qubus\Exception\Exception;
 use Qubus\Form\Form;
 use Qubus\Form\FormBuilder;
 
+use function array_merge;
 use function base_convert;
 use function call_user_func_array;
 use function func_get_args;
@@ -114,14 +115,20 @@ abstract class Element
             };
         }
 
-        $this->options = $options + $this->options + ['decorate' => true];
+        $this->options = array_merge($options, $this->options, ['decorate' => true]);
         foreach ($this->options as $key => $value) {
             if (! isset($value)) {
                 unset($this->options[$key]);
             }
         }
 
-        $this->attr = new Attr($attr + $this->attr);
+        if ($this->attr instanceof Attr) {
+            $attr__ = $this->attr->getArrayCopy();
+        } else {
+            $attr__ = $this->attr;
+        }
+
+        $this->attr = new Attr(array_merge($attr + $attr__));
     }
 
     /**
@@ -501,7 +508,7 @@ abstract class Element
     public function getOptions(): array
     {
         $defaults = isset($this->parent) ? $this->parent->getOptions() : FormBuilder::$options;
-        return $this->options + $defaults;
+        return array_merge($this->options, $defaults);
     }
 
     /**
@@ -679,7 +686,7 @@ abstract class Element
         }
 
         foreach ($this as $prop => $value) {
-            $new->$prop = $value;
+            $new->{$prop} = $value;
         }
 
         $new->setOption($options);

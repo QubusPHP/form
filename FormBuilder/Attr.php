@@ -246,7 +246,7 @@ class Attr extends ArrayIterator
             $value = $this->cast($key, $value);
         }
 
-        $attrs = $override + $this->getAll();
+        $attrs = array_merge($override, $this->getAll());
 
         $pairs = [];
         foreach ($attrs as $key => $value) {

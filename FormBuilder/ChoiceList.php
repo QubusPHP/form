@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Qubus\Form\FormBuilder;
 
+use Qubus\Exception\Data\TypeException;
+
 use function array_merge;
 use function htmlentities;
 use function implode;
@@ -30,8 +32,9 @@ use function is_array;
 class ChoiceList extends Choice
 {
     /**
-     * @param array $options  Element options
-     * @param array $attr     HTML attributes
+     * @param array $options Element options
+     * @param array $attr HTML attributes
+     * @throws TypeException
      */
     public function __construct(array $options = [], array $attr = [])
     {

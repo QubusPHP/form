@@ -11,6 +11,7 @@ use function dirname;
 use function file_exists;
 use function glob;
 use function htmlentities;
+use function implode;
 use function ini_get;
 use function is_dir;
 use function is_string;
@@ -218,7 +219,7 @@ class FileInput extends Control
 
         if (is_array($this->value) && !$this->value['error']) {
             $hidden = '<input type="hidden" name="' . $name . '" '
-            . 'value="^;' . htmlentities(join(';', $this->value)) . '">' . "\n";
+            . 'value="^;' . htmlentities(implode(';', $this->value)) . '">' . "\n";
         }
 
         $attr_html = $this->attr->render(['name' => null, 'multiple' => null]);
