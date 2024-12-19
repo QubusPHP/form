@@ -68,6 +68,6 @@ class Textarea extends Control
      */
     public function renderElement(): string
     {
-        return "<textarea {$this->attr}>" . htmlentities($this->getValue()) . "</textarea>";
+        return "<textarea {$this->attr}>" . htmlentities($this->getOption('value') ?? '') . "</textarea>";
     }
 }
